@@ -1,6 +1,6 @@
 {
-  "name": "SPRAVOCHNIK",
-  "short_name": "SPRAVOCHNIK",
+  "name": "CRS",
+  "short_name": "CRS",
   "description": "Справочник по масляным выключателям",
   "start_url": ".",
   "display": "standalone",
