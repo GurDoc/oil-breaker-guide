@@ -1,0 +1,28 @@
+.App {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.breaker-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+
+.breaker-card h2 {
+  margin: 0 0 10px;
+}
+
+.breaker-card p {
+  margin: 5px 0;
+}
