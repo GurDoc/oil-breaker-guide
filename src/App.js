@@ -83,6 +83,11 @@ export default function OilBreakerGuide() {
           </div>
         ))}
       </div>
+
+      {/* Подпись в правом нижнем углу */}
+      <div className="footer-signature">
+        <p>by Kirill Erohin</p>
+      </div>
     </div>
   );
 }
