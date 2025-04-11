@@ -197,12 +197,15 @@ export default function OilBreakerGuide() {
           </div>
         ))}
       </div>
+
+      {/* Новый раздел Приводы выключателей */}
+      <section className="drive-section">
+        <h2>Приводы выключателей</h2>
+        <p>Здесь будет информация о приводах выключателей.</p>
+      </section>
     </div>
   );
 }
-
-
-
 const styles = {
   container: {
     padding: "20px",
@@ -246,4 +249,22 @@ const styles = {
     color: "#333",
     marginBottom: "10px",
   },
+  driveSection: {
+    padding: "20px",
+    marginTop: "40px",
+    backgroundColor: "#f4f4f9",
+    borderRadius: "8px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  },
+  driveSectionTitle: {
+    fontSize: "24px",
+    fontWeight: "bold",
+    marginBottom: "10px",
+  },
+  driveSectionText: {
+    fontSize: "16px",
+    color: "#333",
+  },
 };
+
+
