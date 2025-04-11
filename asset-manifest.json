@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/oil-breaker-guide/static/css/main.bbba05aa.css",
-    "main.js": "/oil-breaker-guide/static/js/main.6633b373.js",
+    "main.css": "/oil-breaker-guide/static/css/main.3bd49ff5.css",
+    "main.js": "/oil-breaker-guide/static/js/main.ba421f75.js",
     "static/js/488.21257130.chunk.js": "/oil-breaker-guide/static/js/488.21257130.chunk.js",
     "service-worker.js": "/oil-breaker-guide/service-worker.js",
     "index.html": "/oil-breaker-guide/index.html",
-    "main.bbba05aa.css.map": "/oil-breaker-guide/static/css/main.bbba05aa.css.map",
-    "main.6633b373.js.map": "/oil-breaker-guide/static/js/main.6633b373.js.map",
+    "main.3bd49ff5.css.map": "/oil-breaker-guide/static/css/main.3bd49ff5.css.map",
+    "main.ba421f75.js.map": "/oil-breaker-guide/static/js/main.ba421f75.js.map",
     "488.21257130.chunk.js.map": "/oil-breaker-guide/static/js/488.21257130.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbba05aa.css",
-    "static/js/main.6633b373.js"
+    "static/css/main.3bd49ff5.css",
+    "static/js/main.ba421f75.js"
   ]
 }
