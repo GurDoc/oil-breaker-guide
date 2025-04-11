@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './styles.css';
 
 // Массив с данными по выключателям
@@ -160,6 +160,21 @@ const breakers = [
 
 export default function OilBreakerGuide() {
   const [query, setQuery] = useState("");
+
+  // Установка темы при первой загрузке
+  useEffect(() => {
+    const body = document.body;
+    if (!body.classList.contains("dark") && !body.classList.contains("light")) {
+      body.classList.add("light"); // по умолчанию светлая тема
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const body = document.body;
+    body.classList.toggle("dark");
+    body.classList.toggle("light");
+  };
+
   const filtered = breakers.filter(b =>
     b.model.toLowerCase().includes(query.toLowerCase())
   );
@@ -174,6 +189,9 @@ export default function OilBreakerGuide() {
         onChange={e => setQuery(e.target.value)}
         className="input"
       />
+      <button className="theme-toggle" onClick={toggleTheme}>
+        Переключить тему
+      </button>
       <div className="card-container">
         {filtered.map((b, idx) => (
           <div key={idx} className="card">
@@ -198,7 +216,6 @@ export default function OilBreakerGuide() {
         ))}
       </div>
 
-      {/* Новый раздел Приводы выключателей */}
       <section className="drive-section">
         <h2>Приводы выключателей</h2>
         <p>Здесь будет информация о приводах выключателей.</p>
@@ -206,65 +223,3 @@ export default function OilBreakerGuide() {
     </div>
   );
 }
-const styles = {
-  container: {
-    padding: "20px",
-    maxWidth: "800px",
-    margin: "0 auto",
-    fontFamily: "Arial, sans-serif",
-  },
-  header: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    marginBottom: "20px",
-    textAlign: "center",
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    marginBottom: "20px",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-    fontSize: "16px",
-  },
-  cardContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "20px",
-  },
-  card: {
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    padding: "20px",
-    backgroundColor: "#fafafa",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
-  },
-  cardContent: {
-    fontSize: "16px",
-    lineHeight: "1.6",
-  },
-  cardTitle: {
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#333",
-    marginBottom: "10px",
-  },
-  driveSection: {
-    padding: "20px",
-    marginTop: "40px",
-    backgroundColor: "#f4f4f9",
-    borderRadius: "8px",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  },
-  driveSectionTitle: {
-    fontSize: "24px",
-    fontWeight: "bold",
-    marginBottom: "10px",
-  },
-  driveSectionText: {
-    fontSize: "16px",
-    color: "#333",
-  },
-};
-
-

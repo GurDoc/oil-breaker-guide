@@ -1,9 +1,31 @@
+/* === Глобальные стили для тем и фона всей страницы === */
+html,
+body {
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  padding: 0;
+}
+
+/* Светлая тема */
+body.light, html.light {
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Тёмная тема */
+body.dark, html.dark {
+  background-color: #121212;
+  color: #f4f4f4;
+}
+
+
 /* Основные стили для контейнера */
 .container {
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* Заголовок */
@@ -12,6 +34,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   text-align: center;
+  transition: color 0.3s;
 }
 
 /* Стиль для инпута */
@@ -22,6 +45,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
 }
 
 /* Контейнер для карточек */
@@ -38,6 +62,7 @@
   padding: 20px;
   background-color: #fafafa;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 /* Контент внутри карточки */
@@ -52,6 +77,7 @@
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
+  transition: color 0.3s;
 }
 
 /* Подпись в правом нижнем углу */
@@ -62,4 +88,76 @@
   font-size: 14px;
   color: #888;
   font-family: Arial, sans-serif;
+}
+
+
+/* ========== Темная тема ========== */
+body.dark .container {
+  background-color: transparent;
+  color: #f4f4f4;
+}
+
+body.dark .card {
+  background-color: #1e1e1e;
+  border-color: #444;
+}
+
+body.dark .header,
+body.dark .card-title {
+  color: #f4f4f4;
+}
+
+body.dark .input {
+  background-color: #2a2a2a;
+  border-color: #555;
+  color: #f4f4f4;
+}
+
+body.dark .footer-signature {
+  color: #ccc;
+}
+
+
+/* ========== Светлая тема ========== */
+body.light .container {
+  background-color: transparent;
+  color: #333;
+}
+
+body.light .card {
+  background-color: #fafafa;
+  border-color: #ddd;
+}
+
+body.light .header,
+body.light .card-title {
+  color: #333;
+}
+
+body.light .input {
+  background-color: #fff;
+  border-color: #ccc;
+  color: #333;
+}
+
+body.light .footer-signature {
+  color: #888;
+}
+
+
+/* Стиль для кнопки переключения темы */
+.theme-toggle {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #0056b3;
 }
