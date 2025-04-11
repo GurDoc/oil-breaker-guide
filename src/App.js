@@ -1,55 +1,161 @@
-// Подключение стилей
+import React, { useState } from "react";
 import './styles.css';
 
-import React, { useState } from "react";
-
-// Массив с данными для выключателей
+// Массив с данными по выключателям
 const breakers = [
   {
-    model: "ВМП-10",
-    voltage: "10 кВ",
-    current: "630–1600 А",
-    weight: "~220 кг",
-    oil: "4.5 л",
-    resistance: "≤ 50 мкОм",
-    notes: "С ручным и приводным управлением. Подходит для КРУ и КСО."
+    model: "ВМП-10 (600,1000,1500)",
+    fullStroke: "240+5 мм",
+    movingContactStroke: "60+3/-5 мм",
+    spareStroke: ">= 4 мм",
+    contactTouchDifference: "<=5 мм",
+    springBufferStroke: "Около 21 мм",
+    springBufferGap: "47 мм",
+    oilBufferStroke: "87+2/-2 мм",
+    oilBufferLevel: "50/40/35 мм",
+    angleOfDrive: "3.6+0.5/-0.5 м/с",
+    resistance: "<=4.5 мкОм",
+    speedOnTouch: "3.5+0.3/-0.5 м/с",
+    fullSpeedOn: "<=5 м/с",
+    speedOffTouch: "3.5+0.3/-0.5 м/с",
+    fullSpeedOff: "<=5 м/с"
   },
   {
     model: "ВМГ-133",
-    voltage: "6/10 кВ",
-    current: "400–630 А",
-    weight: "~180 кг",
-    oil: "~30 л",
-    resistance: "≤ 80 мкОм",
-    notes: "Популярен в старых сетях. Предназначен для ЗРУ на ячейки КСО."
-  },
-  {
-    model: "ВКЭ-10",
-    voltage: "10 кВ",
-    current: "630–1600 А",
-    weight: "~150 кг",
-    oil: "~35 л",
-    resistance: "≤ 60 мкОм",
-    notes: "С электромагнитным приводом. Колонкового типа с малым объёмом масла."
+    fullStroke: "250+5 мм",
+    movingContactStroke: "40+5 мм",
+    spareStroke: "25-30 мм",
+    contactTouchDifference: "<=5 мм",
+    springBufferStroke: "14+1/-1 мм",
+    springBufferGap: "0.5-1.5 мм",
+    oilBufferStroke: "24+1 мм",
+    oilBufferLevel: "10 мм",
+    angleOfDrive: "90+2/-2°",
+    resistance: "90+2/-2 мкОм",
+    speedOnTouch: "2.9 м/с",
+    fullSpeedOn: "3 м/с",
+    speedOffTouch: "1.75 м/с",
+    fullSpeedOff: "3 м/с"
   },
   {
     model: "ВМГ-10",
-    voltage: "6/10 кВ",
-    current: "630–1000 А",
-    weight: "~200 кг",
-    oil: "~20 л",
-    resistance: "≤ 80 мкОм",
-    notes: "Масляный выключатель с малым объёмом масла."
+    fullStroke: "210+5/210-5 мм",
+    movingContactStroke: "45+5/-5 мм",
+    spareStroke: "25+5/-5 мм",
+    contactTouchDifference: "<=5 мм",
+    springBufferStroke: "20+1/-1 мм",
+    springBufferGap: "45 мм",
+    oilBufferStroke: "90+2/-2 мм",
+    oilBufferLevel: "78°",
+    angleOfDrive: "2.3 м/с",
+    resistance: "2.3 мкОм",
+    speedOnTouch: "2.3 м/с",
+    fullSpeedOn: "2.4 м/с",
+    speedOffTouch: "3.9 м/с",
+    fullSpeedOff: "3.9 м/с"
   },
   {
     model: "МГГ-10",
-    voltage: "6/10 кВ",
-    current: "2000–5000 А",
-    weight: "~300 кг",
-    oil: "20 кг",
-    resistance: "≤ 40 мкОм",
-    notes: "Генераторный выключатель, рассчитан на высокий ток отключения."
+    fullStroke: "290+10 мм",
+    movingContactStroke: "Д.Г. 95 мм",
+    spareStroke: "25 мм",
+    contactTouchDifference: "<=5 мм",
+    springBufferStroke: "До половины корпуса",
+    springBufferGap: "Д.Г. 260/26",
+    oilBufferStroke: "Д.Г. 1.4",
+    oilBufferLevel: "Д.Г. 1.7",
+    angleOfDrive: "Эл. 1.2/ДГ 2.1",
+    resistance: "2.85 мкОм",
+    speedOnTouch: "1.4 м/с",
+    fullSpeedOn: "1.7 м/с",
+    speedOffTouch: "2.1 м/с",
+    fullSpeedOff: "2.85 м/с"
   },
+  {
+    model: "МГ-20",
+    fullStroke: "500-25 мм",
+    movingContactStroke: "90+2/-2 мм",
+    spareStroke: "Не указано",
+    contactTouchDifference: "Не указано",
+    springBufferStroke: "Не указано",
+    springBufferGap: "Не указано",
+    oilBufferStroke: "Д.Г. не более 300",
+    oilBufferLevel: "Д.Г. 2+0.2/-0.2",
+    angleOfDrive: "Не указано",
+    resistance: "ДГ 1.8+0.2/-0.2",
+    speedOnTouch: "Не указано",
+    fullSpeedOn: "Не указано",
+    speedOffTouch: "Не указано",
+    fullSpeedOff: "Не указано"
+  },
+  {
+    model: "ВМП-10Э (2500)",
+    fullStroke: "295-5 мм",
+    movingContactStroke: "80+3/-5 мм",
+    spareStroke: "Вкл 4-8/Откл 5 мм",
+    contactTouchDifference: "<=7 мм",
+    springBufferStroke: "58 мм",
+    springBufferGap: "21+1/-1 мм",
+    oilBufferStroke: "47 мм",
+    oilBufferLevel: "90+1/-1 мм",
+    angleOfDrive: "Раб. 19, Д.Г. 30, Полн 14 мм",
+    resistance: "3.6-4.4 мкОм",
+    speedOnTouch: "4+0.4/-0.4 м/с",
+    fullSpeedOn: "3.1-3.6 м/с",
+    speedOffTouch: "3.8-4.6 м/с",
+    fullSpeedOff: "3.1-3.6 м/с"
+  },
+  {
+    model: "ВКЭ-10 (600,1000)",
+    fullStroke: "140-4 мм",
+    movingContactStroke: "30 мм",
+    spareStroke: "Не указано",
+    contactTouchDifference: "Не указано",
+    springBufferStroke: "19.5 мм",
+    springBufferGap: "Не указано",
+    oilBufferStroke: "Не указано",
+    oilBufferLevel: "Не указано",
+    angleOfDrive: "60/45",
+    resistance: "4 мкОм",
+    speedOnTouch: "3.2 м/с",
+    fullSpeedOn: "Не указано",
+    speedOffTouch: "Не указано",
+    fullSpeedOff: "Не указано"
+  },
+  {
+    model: "ВМПЭ-10 (630,1000,1600)",
+    fullStroke: "208+3/208-5 мм",
+    movingContactStroke: "------- мм",
+    spareStroke: "Вкл 3/Откл 6 мм",
+    contactTouchDifference: "<=5 мм",
+    springBufferStroke: "21+1/-1 мм",
+    springBufferGap: "45 мм",
+    oilBufferStroke: "55/45/32 мм",
+    oilBufferLevel: "4.8/5.2 м/с",
+    angleOfDrive: "3.2 м/с",
+    resistance: "Не указано",
+    speedOnTouch: "Не указано",
+    fullSpeedOn: "Не указано",
+    speedOffTouch: "Не указано",
+    fullSpeedOff: "Не указано"
+  },
+  {
+    model: "МГ-10",
+    fullStroke: "420+20/420-10 мм",
+    movingContactStroke: "90+2/-2 мм",
+    spareStroke: "Не указано",
+    contactTouchDifference: "Д.Г. не более 300 мм",
+    springBufferStroke: "Не указано",
+    springBufferGap: "Не указано",
+    oilBufferStroke: "Не указано",
+    oilBufferLevel: "Не указано",
+    angleOfDrive: "Не указано",
+    resistance: "Не указано",
+    speedOnTouch: "Не указано",
+    fullSpeedOn: "Не указано",
+    speedOffTouch: "Не указано",
+    fullSpeedOff: "Не указано"
+  }
 ];
 
 export default function OilBreakerGuide() {
@@ -59,38 +165,43 @@ export default function OilBreakerGuide() {
   );
 
   return (
-    <div style={styles.container}>
-      <h1 style={styles.header}>Справочник по масляным выключателям</h1>
+    <div className="container">
+      <h1 className="header">Справочник по масляным выключателям</h1>
       <input
         type="text"
         placeholder="Поиск по модели (например, ВМП-10)"
         value={query}
         onChange={e => setQuery(e.target.value)}
-        style={styles.input}
+        className="input"
       />
-      <div style={styles.cardContainer}>
+      <div className="card-container">
         {filtered.map((b, idx) => (
-          <div key={idx} style={styles.card}>
-            <div style={styles.cardContent}>
-              <h2 style={styles.cardTitle}>{b.model}</h2>
-              <p><strong>Напряжение:</strong> {b.voltage}</p>
-              <p><strong>Номинальный ток:</strong> {b.current}</p>
-              <p><strong>Масса:</strong> {b.weight}</p>
-              <p><strong>Объём масла:</strong> {b.oil}</p>
+          <div key={idx} className="card">
+            <div className="card-content">
+              <h2 className="card-title">{b.model}</h2>
+              <p><strong>Полный ход:</strong> {b.fullStroke}</p>
+              <p><strong>Ход подвижных контактов:</strong> {b.movingContactStroke}</p>
+              <p><strong>Запасной ход:</strong> {b.spareStroke}</p>
+              <p><strong>Неодновременность касания:</strong> {b.contactTouchDifference}</p>
+              <p><strong>Ход пружинного буфера:</strong> {b.springBufferStroke}</p>
+              <p><strong>Зазор в пружинном буфере:</strong> {b.springBufferGap}</p>
+              <p><strong>Ход масляного буфера:</strong> {b.oilBufferStroke}</p>
+              <p><strong>Уровень масла в масляном буфере:</strong> {b.oilBufferLevel}</p>
+              <p><strong>Угол поворота:</strong> {b.angleOfDrive}</p>
               <p><strong>Переходное сопротивление:</strong> {b.resistance}</p>
-              <p><strong>Примечание:</strong> {b.notes}</p>
+              <p><strong>Скорость включения (касание контактов):</strong> {b.speedOnTouch}</p>
+              <p><strong>Полная скорость включения:</strong> {b.fullSpeedOn}</p>
+              <p><strong>Скорость отключения (размыкание):</strong> {b.speedOffTouch}</p>
+              <p><strong>Полная скорость отключения:</strong> {b.fullSpeedOff}</p>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Подпись в правом нижнем углу */}
-      <div className="footer-signature">
-        <p>by Kirill Erohin</p>
-      </div>
     </div>
   );
 }
+
+
 
 const styles = {
   container: {
