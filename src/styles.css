@@ -161,3 +161,25 @@ body.light .footer-signature {
 .theme-toggle:hover {
   background-color: #444; /* Посветлее при наведении */
 }
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  position: absolute; /* Чтобы список выползал поверх остальных элементов */
+  width: 100%;
+  z-index: 10; /* Чтобы подсказки были выше других элементов */
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f1f1f1;
+}

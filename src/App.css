@@ -26,3 +26,91 @@ input {
 .breaker-card p {
   margin: 5px 0;
 }
+/* Список подсказок */
+.suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: absolute;
+  width: 100%;
+  z-index: 999;
+}
+
+/* Элементы подсказок */
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* === Темная тема === */
+body.dark .suggestions-list {
+  background-color: #333;
+  color: #f5f5f5;
+  border-color: #555;
+}
+
+body.dark .suggestion-item:hover {
+  background-color: #444;
+}
+
+/* Стили для контейнера поиска */
+.search-container {
+  position: relative;
+  display: inline-block;
+  width: 90%; /* Убедитесь, что контейнер для поиска занимает всю доступную ширину */
+  max-width: 500px; /* Ограничиваем максимальную ширину (по желанию) */
+}
+
+.input {
+  width: 150%; /* Поле поиска будет занимать всю доступную ширину контейнера */
+  padding-right: 80px; /* Оставляем пространство для кнопки крестика */
+  padding-left: 10px;  /* Немного отступа слева для красоты */
+  font-size: 13px;
+  height: 20px;  /* Устанавливаем высоту для консистентности */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #333;
+}
+
+.clear-button:hover {
+  color: red; /* Цвет крестика при наведении */
+}
+
+/* Стили для кнопки переключения темы */
+.theme-toggle {
+  margin-top: 5px;  /* Расстояние от поля поиска */
+  padding: 3px 87px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #555555;
+  color: rgb(255, 40, 244);
+  border: none;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.theme-toggle:hover {
+  background-color: #2a2b2a;
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './styles.css';
+import './App.css';  // Импортируем файл стилей
+
 
 // Массив с данными по выключателям
 const breakers = [
@@ -159,39 +161,94 @@ const breakers = [
 ];
 
 export default function OilBreakerGuide() {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
 
-  // Установка темы при первой загрузке
   useEffect(() => {
     const body = document.body;
-    if (!body.classList.contains("dark") && !body.classList.contains("light")) {
-      body.classList.add("light"); // по умолчанию светлая тема
+    if (!body.classList.contains('dark') && !body.classList.contains('light')) {
+      body.classList.add('light');
     }
   }, []);
 
   const toggleTheme = () => {
     const body = document.body;
-    body.classList.toggle("dark");
-    body.classList.toggle("light");
+    body.classList.toggle('dark');
+    body.classList.toggle('light');
   };
 
-  const filtered = breakers.filter(b =>
+  const handleClearInput = () => {
+    setQuery("");
+    setSuggestions([]); // добавляем очистку подсказок
+  };
+  
+  
+
+  const handleSuggestionClick = (suggestion) => {
+    setQuery(suggestion);
+    setSuggestions([]);
+  };
+
+  const filtered = breakers.filter((b) =>
     b.model.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
     <div className="container">
       <h1 className="header">Справочник по масляным выключателям</h1>
-      <input
-        type="text"
-        placeholder="Поиск по модели (например, ВМП-10)"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        className="input"
-      />
+
+      {/* Контейнер для поиска */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Поиск по модели (например, ВМП-10)"
+          value={query}
+          onChange={(e) => {
+            const value = e.target.value;
+            setQuery(value);
+            if (value.length > 0) {
+              const filteredSuggestions = breakers
+                .filter((b) =>
+                  b.model.toLowerCase().includes(value.toLowerCase())
+                )
+                .map((b) => b.model);
+              setSuggestions(filteredSuggestions.slice(0, 3)); // максимум 5 подсказок
+            } else {
+              setSuggestions([]);
+            }
+          }}
+          className="input"
+        />
+        
+        {/* Кнопка крестик для очистки поля ввода */}
+        {query && (
+          <button className="clear-button" onClick={handleClearInput}>
+            ✖
+          </button>
+        )}
+      </div>
+
+      {/* Отображение подсказок */}
+      {suggestions.length > 0 && (
+        <ul className="suggestions-list">
+          {suggestions.map((suggestion, idx) => (
+            <li
+              key={idx}
+              className="suggestion-item"
+              onClick={() => handleSuggestionClick(suggestion)}
+            >
+              {suggestion}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {/* Кнопка переключения темы */}
       <button className="theme-toggle" onClick={toggleTheme}>
         Переключить тему
       </button>
+
+      {/* Отображение информации о моделях */}
       <div className="card-container">
         {filtered.map((b, idx) => (
           <div key={idx} className="card">
