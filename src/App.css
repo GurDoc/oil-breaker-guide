@@ -85,7 +85,7 @@ body.dark .suggestion-item:hover {
 .clear-button {
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 100px;
   transform: translateY(-50%);
   background: transparent;
   border: none;
