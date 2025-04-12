@@ -114,3 +114,70 @@ body.dark .suggestion-item:hover {
 .theme-toggle:hover {
   background-color: #2a2b2a;
 }
+/* Контейнер страницы */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Поле ввода */
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 36px 12px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Кнопка-крестик */
+.clear-button {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Подсказки */
+.suggestions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: var(--suggestion-bg);
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: var(--suggestion-hover);
+}
+
+/* Цвета в зависимости от темы */
+body.light {
+  --suggestion-bg: #fff;
+  --suggestion-hover: #f0f0f0;
+}
+
+body.dark {
+  --suggestion-bg: #333;
+  --suggestion-hover: #444;
+}
