@@ -181,3 +181,19 @@ body.dark {
   --suggestion-bg: #333;
   --suggestion-hover: #444;
 }
+/* Адаптивность — чтобы хорошо смотрелось и на мобильных */
+@media (max-width: 600px) {
+  .search-container {
+    max-width: 90%;
+  }
+
+  .input {
+    font-size: 14px;
+    padding: 8px 36px 8px 8px;
+  }
+
+  .clear-button {
+    font-size: 16px;
+    right: 8px;
+  }
+}
