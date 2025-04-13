@@ -98,23 +98,19 @@ body.dark .suggestion-item:hover {
 .clear-button:hover {
   color: #333;
 }
-/* Адаптив для телефонов */
+/* Адаптивность — чтобы хорошо смотрелось и на мобильных */
 @media (max-width: 600px) {
+  .search-container {
+    max-width: 90%;
+  }
+
   .input {
     font-size: 14px;
-    padding: 10px 36px 10px 10px;
+    padding: 8px 36px 8px 8px;
   }
 
   .clear-button {
-    right: 10px;
     font-size: 16px;
-  }
-
-  .card-title {
-    font-size: 18px;
-  }
-
-  .card-content p {
-    font-size: 14px;
+    right: 8px;
   }
 }
