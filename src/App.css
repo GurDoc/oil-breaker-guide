@@ -64,120 +64,57 @@ body.dark .suggestion-item:hover {
   background-color: #444;
 }
 
-/* Стили для контейнера поиска */
+/* Контейнер для строки поиска */
 .search-container {
   position: relative;
-  display: inline-block;
-  width: 90%; /* Убедитесь, что контейнер для поиска занимает всю доступную ширину */
-  max-width: 500px; /* Ограничиваем максимальную ширину (по желанию) */
-}
-
-.input {
-  width: 150%; /* Поле поиска будет занимать всю доступную ширину контейнера */
-  padding-right: 80px; /* Оставляем пространство для кнопки крестика */
-  padding-left: 10px;  /* Немного отступа слева для красоты */
-  font-size: 13px;
-  height: 20px;  /* Устанавливаем высоту для консистентности */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.clear-button {
-  position: absolute;
-  top: 50%;
-  right: 100px;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #333;
-}
-
-.clear-button:hover {
-  color: red; /* Цвет крестика при наведении */
-}
-
-/* Стили для кнопки переключения темы */
-.theme-toggle {
-  margin-top: 5px;  /* Расстояние от поля поиска */
-  padding: 3px 87px;
-  font-size: 14px;
-  cursor: pointer;
-  background-color: #555555;
-  color: rgb(255, 40, 244);
-  border: none;
-  border-radius: 4px;
-  display: inline-block;
-}
-
-.theme-toggle:hover {
-  background-color: #2a2b2a;
-}
-/* Контейнер страницы */
-.container {
-  max-width: 800px;
+  width: 100%;
+  max-width: 500px; /* Максимальная ширина на десктопе */
   margin: 0 auto;
-  padding: 16px;
 }
-
-/* Поле ввода */
-.input-wrapper {
-  position: relative;
-  width: 100%;
-  margin-bottom: 8px;
-}
-
+/* Сам input */
 .input {
   width: 100%;
-  padding: 12px 36px 12px 12px;
+  padding: 10px 40px 10px 10px; /* справа место под крестик */
   font-size: 16px;
-  border: 1px solid #ccc;
   border-radius: 8px;
+  border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
 /* Кнопка-крестик */
 .clear-button {
   position: absolute;
+  right: 10px;
   top: 50%;
-  right: 100px;
   transform: translateY(-50%);
   background: transparent;
   border: none;
   font-size: 18px;
   cursor: pointer;
-}
-
-/* Подсказки */
-.suggestions-list {
-  list-style: none;
-  margin: 0;
+  color: #888;
   padding: 0;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  max-height: 150px;
-  overflow-y: auto;
-  background-color: var(--suggestion-bg);
+  line-height: 1;
 }
-
-.suggestion-item {
-  padding: 10px;
-  cursor: pointer;
+/* Кнопка при наведении */
+.clear-button:hover {
+  color: #333;
 }
+/* Адаптив для телефонов */
+@media (max-width: 600px) {
+  .input {
+    font-size: 14px;
+    padding: 10px 36px 10px 10px;
+  }
 
-.suggestion-item:hover {
-  background-color: var(--suggestion-hover);
-}
+  .clear-button {
+    right: 10px;
+    font-size: 16px;
+  }
 
-/* Цвета в зависимости от темы */
-body.light {
-  --suggestion-bg: #fff;
-  --suggestion-hover: #f0f0f0;
-}
+  .card-title {
+    font-size: 18px;
+  }
 
-body.dark {
-  --suggestion-bg: #333;
-  --suggestion-hover: #444;
+  .card-content p {
+    font-size: 14px;
+  }
 }
