@@ -197,3 +197,9 @@ body.dark {
     right: 8px;
   }
 }
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-bottom: 16px; /* Немного отступа снизу */
+    margin-top: 12px;     /* Поднимаем кнопку вверх */
+  }
+}
